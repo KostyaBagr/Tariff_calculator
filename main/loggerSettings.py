@@ -21,4 +21,4 @@ class CustomLogger:
         """
         data_dict = {key: self._serialize_value(value) for key, value in 
                      data.validated_data.items()}
-        return json.dumps(data_dict, indent=4)
+        return json.dumps(data_dict, indent=4,  ensure_ascii=False)

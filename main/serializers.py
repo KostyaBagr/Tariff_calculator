@@ -11,7 +11,7 @@ class TariffInputSerializer(serializers.Serializer):
     TariffUnitPrice = serializers.IntegerField()
     Started_at = serializers.DateTimeField()
     LastPaymentTime = serializers.DateTimeField(required=False)
-    Deposit = serializers.IntegerField(required=False)
+    Deposit = serializers.FloatField(required=False)
 
     def validate_TariffUnit(self, value):
         """Check tariffUnit instance."""

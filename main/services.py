@@ -75,9 +75,9 @@ def tariffService(data: TariffInputSerializer) -> TariffOutputSerializser:
     output = TariffOutputSerializser(data={
         'Duration': str(round(duration)),
         'UnpaidDuration': str(round(unpaind_duration)) if unpaind_duration else '',
-        'Cost': cos
+        'Cost': round(cos)
     })
     if output.is_valid():
         return output.validated_data
-
+    return output.errors
    
