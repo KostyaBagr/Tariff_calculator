@@ -2,9 +2,9 @@
 URL configuration for main app.
 """
 from django.urls import path
-from .views import HelloWorld
+from .views import CalculatorView
 
 urlpatterns = [
 
-    path("test/", HelloWorld.as_view(), name="hello world")
+    path("tariff_calculator/calc/", CalculatorView.as_view(), name="tariff_calculator")
 ]
