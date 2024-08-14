@@ -42,7 +42,7 @@ def duration_transfer(seconds: int, unit: str) -> int:
         "минута": 60,
         "час": 3600,
         "день": 86400,
-        "неделя": 604800 
+        "неделя": 604800
     }
 
     return math.ceil(seconds / time.get(unit.lower()))
@@ -73,8 +73,8 @@ def tariffService(data: TariffInputSerializer) -> TariffOutputSerializser:
     logging.info(f"Results are{duration, unpaind_duration, cos}")
     
     output = TariffOutputSerializser(data={
-        'Duration': str(duration),
-        'UnpaidDuration': str(unpaind_duration) if unpaind_duration else '',
+        'Duration': str(round(duration)),
+        'UnpaidDuration': str(round(unpaind_duration)) if unpaind_duration else '',
         'Cost': cos
     })
     if output.is_valid():
