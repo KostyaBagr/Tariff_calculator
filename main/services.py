@@ -11,7 +11,7 @@ from datetime import datetime
 from .serializers import TariffInputSerializer, TariffOutputSerializser
 from .loggerSettings import CustomLogger
 
-logging.basicConfig(level=logging.INFO, filename="services_log.py",  
+logging.basicConfig(level=logging.INFO, filename="services_log.log",  
                     format="%(asctime)s %(levelname)s %(message)s", encoding='utf-8')
 
 
@@ -38,21 +38,16 @@ def duration_transfer(seconds: int, unit: str) -> int:
     """
     unit = unit.lower()
 
-    if unit == "минута":
-        sec = 60
-    elif unit == "час":
-        sec = 3600
-    elif unit == "день":
-        sec = 86400
-    elif unit == "неделя":
-        sec = 604800
-    else:
-        return
-    
-    unit = seconds / sec
-    return math.ceil(unit)
-    
+    time = {
+        "минута": 60,
+        "час": 3600,
+        "день": 86400,
+        "неделя": 604800 
+    }
 
+    return math.ceil(seconds / time.get(unit.lower()))
+
+    
 def calculate_cos(deposit: int, duration: int, price: int) -> int:
     """
     Calculate debt.
